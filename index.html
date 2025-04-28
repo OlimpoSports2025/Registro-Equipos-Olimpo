@@ -42,9 +42,6 @@
             color: #000;
             margin-bottom: 20px;
         }
-        .table-container {
-            margin-bottom: 20px;
-        }
         table {
             width: 100%;
             margin-bottom: 20px;
@@ -78,36 +75,10 @@
         }
         button:hover {
             background-color: #333;
-            color: #fff;
         }
         .add-row-btn {
             margin-top: 10px;
             background-color: #000;
-            color: #fff;
-        }
-        .social-banner {
-            background-color: #000;
-            color: white;
-            text-align: center;
-            padding: 10px;
-            width: 100%;
-            position: relative;
-            left: 0;
-            bottom: 0;
-            z-index: 100;
-        }
-        .social-banner a {
-            color: white;
-            margin: 0 15px;
-            text-decoration: none;
-            font-size: 1.1em;
-        }
-        .social-banner p {
-            margin: 10px 0;
-            font-size: 1.2em;
-        }
-        .social-banner a:hover {
-            text-decoration: underline;
         }
     </style>
 </head>
@@ -120,168 +91,131 @@
 
 <div class="form-container">
     <h2>Registro de Equipo</h2>
-    <form id="
-        action=https://script.google.com/macros/s/AKfycbxgxwrM6IDi9CGMY14l8wnRpNuPZztu6MfmEskoli8c3Vf_xZqLU0kKqXEyq_GK9nA1/exec"
-        method="POST">
+    <form id="formularioEquipo" action="https://script.google.com/macros/s/AKfycbxgxwrM6IDi9CGMY14l8wnRpNuPZztu6MfmEskoli8c3Vf_xZqLU0kKqXEyq_GK9nA1/exec" method="POST" enctype="multipart/form-data">
 
-        <!-- Información General -->
         <label for="nombreEquipo">Nombre del Equipo:</label>
-        <input type="text" id="nombreEquipo" name="nombreEquipo" required><br><br>
+        <input type="text" id="nombreEquipo" name="nombreEquipo" required>
 
         <label for="tipoTela">Tipo de Tela:</label>
-        <input type="text" id="tipoTela" name="tipoTela" required><br><br>
+        <input type="text" id="tipoTela" name="tipoTela" required>
 
-        <label for="archivo">Nombre del Archivo:</label>
-        <input type="file" id="archivo" name="archivo"><br><br>
+        <label for="archivo">Subir Logo o Imagen:</label>
+        <input type="file" id="archivo" name="archivo">
 
         <!-- Integrantes -->
-        <div class="table-container">
-            <h3>Integrantes</h3>
-            <table id="tablaIntegrantes">
-                <thead>
-                    <tr>
-                        <th>Número</th>
-                        <th>Nombre</th>
-                        <th>Talla Jersey</th>
-                        <th>Talla Short</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td><input type="text" name="numero[]"></td>
-                        <td><input type="text" name="nombre[]"></td>
-                        <td>
-                            <select name="tallaJersey[]">
-                                <option value="N/A">N/A</option>
-                                <option value="S">S</option>
-                                <option value="M">M</option>
-                                <option value="L">L</option>
-                                <option value="XL">XL</option>
-                                <option value="XXL">XXL</option>
-                                <option value="XXXL">XXXL</option>
-                            </select>
-                        </td>
-                        <td>
-                            <select name="tallaShort[]">
-                                <option value="N/A">N/A</option>
-                                <option value="S">S</option>
-                                <option value="M">M</option>
-                                <option value="L">L</option>
-                                <option value="XL">XL</option>
-                                <option value="XXL">XXL</option>
-                                <option value="XXXL">XXXL</option>
-                            </select>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-            <button type="button" class="add-row-btn" onclick="agregarFila('tablaIntegrantes', ['numero', 'nombre', 'tallaJersey', 'tallaShort'])">Agregar Fila</button>
-        </div>
+        <h3>Integrantes</h3>
+        <table id="tablaIntegrantes">
+            <thead>
+                <tr>
+                    <th>Número</th>
+                    <th>Nombre</th>
+                    <th>Talla Jersey</th>
+                    <th>Talla Short</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><input type="text" name="numero[]"></td>
+                    <td><input type="text" name="nombre[]"></td>
+                    <td>
+                        <select name="tallaJersey[]">
+                            <option value="N/A">N/A</option><option value="S">S</option><option value="M">M</option>
+                            <option value="L">L</option><option value="XL">XL</option><option value="XXL">XXL</option><option value="XXXL">XXXL</option>
+                        </select>
+                    </td>
+                    <td>
+                        <select name="tallaShort[]">
+                            <option value="N/A">N/A</option><option value="S">S</option><option value="M">M</option>
+                            <option value="L">L</option><option value="XL">XL</option><option value="XXL">XXL</option><option value="XXXL">XXXL</option>
+                        </select>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <button type="button" class="add-row-btn" onclick="agregarFila('tablaIntegrantes', ['numero', 'nombre', 'tallaJersey', 'tallaShort'])">Agregar Fila</button>
 
-        <!-- Calentamiento -->
-        <div class="table-container">
-            <h3>Playera de Calentamiento</h3>
-            <table id="tablaCalentamiento">
-                <thead>
-                    <tr>
-                        <th>Nombre</th>
-                        <th>Número</th>
-                        <th>Talla</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td><input type="text" name="nombreCalentamiento[]"></td>
-                        <td><input type="text" name="numeroCalentamiento[]"></td>
-                        <td>
-                            <select name="tallaCalentamiento[]">
-                                <option value="N/A">N/A</option>
-                                <option value="S">S</option>
-                                <option value="M">M</option>
-                                <option value="L">L</option>
-                                <option value="XL">XL</option>
-                                <option value="XXL">XXL</option>
-                                <option value="XXXL">XXXL</option>
-                            </select>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-            <button type="button" class="add-row-btn" onclick="agregarFila('tablaCalentamiento', ['nombreCalentamiento', 'numeroCalentamiento', 'tallaCalentamiento'])">Agregar Fila</button>
-        </div>
+        <!-- Playera de Calentamiento -->
+        <h3>Playera de Calentamiento</h3>
+        <table id="tablaCalentamiento">
+            <thead>
+                <tr>
+                    <th>Nombre</th>
+                    <th>Número</th>
+                    <th>Talla</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><input type="text" name="nombreCalentamiento[]"></td>
+                    <td><input type="text" name="numeroCalentamiento[]"></td>
+                    <td>
+                        <select name="tallaCalentamiento[]">
+                            <option value="N/A">N/A</option><option value="S">S</option><option value="M">M</option>
+                            <option value="L">L</option><option value="XL">XL</option><option value="XXL">XXL</option><option value="XXXL">XXXL</option>
+                        </select>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <button type="button" class="add-row-btn" onclick="agregarFila('tablaCalentamiento', ['nombreCalentamiento', 'numeroCalentamiento', 'tallaCalentamiento'])">Agregar Fila</button>
 
-        <!-- Entrenamiento -->
-        <div class="table-container">
-            <h3>Playera de Entrenamiento</h3>
-            <table id="tablaEntrenamiento">
-                <thead>
-                    <tr>
-                        <th>Nombre</th>
-                        <th>Número</th>
-                        <th>Talla</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td><input type="text" name="nombreEntrenamiento[]"></td>
-                        <td><input type="text" name="numeroEntrenamiento[]"></td>
-                        <td>
-                            <select name="tallaEntrenamiento[]">
-                                <option value="N/A">N/A</option>
-                                <option value="S">S</option>
-                                <option value="M">M</option>
-                                <option value="L">L</option>
-                                <option value="XL">XL</option>
-                                <option value="XXL">XXL</option>
-                                <option value="XXXL">XXXL</option>
-                            </select>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-            <button type="button" class="add-row-btn" onclick="agregarFila('tablaEntrenamiento', ['nombreEntrenamiento', 'numeroEntrenamiento', 'tallaEntrenamiento'])">Agregar Fila</button>
-        </div>
+        <!-- Playera de Entrenamiento -->
+        <h3>Playera de Entrenamiento</h3>
+        <table id="tablaEntrenamiento">
+            <thead>
+                <tr>
+                    <th>Nombre</th>
+                    <th>Número</th>
+                    <th>Talla</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><input type="text" name="nombreEntrenamiento[]"></td>
+                    <td><input type="text" name="numeroEntrenamiento[]"></td>
+                    <td>
+                        <select name="tallaEntrenamiento[]">
+                            <option value="N/A">N/A</option><option value="S">S</option><option value="M">M</option>
+                            <option value="L">L</option><option value="XL">XL</option><option value="XXL">XXL</option><option value="XXXL">XXXL</option>
+                        </select>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <button type="button" class="add-row-btn" onclick="agregarFila('tablaEntrenamiento', ['nombreEntrenamiento', 'numeroEntrenamiento', 'tallaEntrenamiento'])">Agregar Fila</button>
 
-        <!-- Porra -->
-        <div class="table-container">
-            <h3>Playera de Porra</h3>
-            <table id="tablaPorra">
-                <thead>
-                    <tr>
-                        <th>Nombre</th>
-                        <th>Número</th>
-                        <th>Talla</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td><input type="text" name="nombrePorra[]"></td>
-                        <td><input type="text" name="numeroPorra[]"></td>
-                        <td>
-                            <select name="tallaPorra[]">
-                                <option value="N/A">N/A</option>
-                                <option value="S">S</option>
-                                <option value="M">M</option>
-                                <option value="L">L</option>
-                                <option value="XL">XL</option>
-                                <option value="XXL">XXL</option>
-                                <option value="XXXL">XXXL</option>
-                            </select>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-            <button type="button" class="add-row-btn" onclick="agregarFila('tablaPorra', ['nombrePorra', 'numeroPorra', 'tallaPorra'])">Agregar Fila</button>
-        </div>
+        <!-- Playera de Porra -->
+        <h3>Playera de Porra</h3>
+        <table id="tablaPorra">
+            <thead>
+                <tr>
+                    <th>Nombre</th>
+                    <th>Número</th>
+                    <th>Talla</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><input type="text" name="nombrePorra[]"></td>
+                    <td><input type="text" name="numeroPorra[]"></td>
+                    <td>
+                        <select name="tallaPorra[]">
+                            <option value="N/A">N/A</option><option value="S">S</option><option value="M">M</option>
+                            <option value="L">L</option><option value="XL">XL</option><option value="XXL">XXL</option><option value="XXXL">XXXL</option>
+                        </select>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <button type="button" class="add-row-btn" onclick="agregarFila('tablaPorra', ['nombrePorra', 'numeroPorra', 'tallaPorra'])">Agregar Fila</button>
 
-        <!-- Anotaciones -->
         <label for="anotaciones">Anotaciones:</label>
-        <textarea id="anotaciones" name="anotaciones"></textarea><br><br>
+        <textarea id="anotaciones" name="anotaciones"></textarea>
 
+        <br><br>
         <button type="submit">Enviar</button>
     </form>
 </div>
-
 
 <script>
 function agregarFila(tablaId, campos) {
@@ -309,13 +243,12 @@ function agregarFila(tablaId, campos) {
     });
 }
 
-// Enviar el formulario
 document.getElementById('formularioEquipo').addEventListener('submit', function(e) {
     e.preventDefault();
 
     const form = new FormData(this);
 
-    fetch('https://script.google.com/macros/s/AKfycbxgxwrM6IDi9CGMY14l8wnRpNuPZztu6MfmEskoli8c3Vf_xZqLU0kKqXEyq_GK9nA1/exec', {
+    fetch(this.action, {
         method: 'POST',
         body: form
     })
